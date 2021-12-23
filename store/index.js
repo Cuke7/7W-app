@@ -8,6 +8,7 @@ export const state = () => ({
       merveille: "",
       points: [],
       score: 0,
+      index: 0,
     },
     {
       nom: "Louis",
@@ -16,6 +17,7 @@ export const state = () => ({
       merveille: "",
       points: [],
       score: 0,
+      index: 1,
     },
     {
       nom: "Mélanie",
@@ -24,6 +26,7 @@ export const state = () => ({
       merveille: "",
       points: [],
       score: 0,
+      index: 2,
     },
     {
       nom: "Benjamin",
@@ -32,6 +35,7 @@ export const state = () => ({
       merveille: "",
       points: [],
       score: 0,
+      index: 3,
     },
     {
       nom: "Jean",
@@ -40,6 +44,7 @@ export const state = () => ({
       merveille: "",
       points: [],
       score: 0,
+      index: 4,
     },
     {
       nom: "Martin",
@@ -48,6 +53,7 @@ export const state = () => ({
       merveille: "",
       points: [],
       score: 0,
+      index: 5,
     },
     {
       nom: "Clotilde",
@@ -56,6 +62,7 @@ export const state = () => ({
       merveille: "",
       points: [],
       score: 0,
+      index: 6,
     },
     {
       nom: "Marie",
@@ -64,6 +71,7 @@ export const state = () => ({
       merveille: "",
       points: [],
       score: 0,
+      index: 7,
     },
   ],
   merveilles: [
@@ -85,6 +93,7 @@ export const state = () => ({
     "Alexandria",
     "Syracuse ",
   ],
+  guestsNumbers: 0,
   // Game data
   game: {
     players: [],

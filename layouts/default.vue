@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar fixed app color="primary">
+    <v-app-bar fixed app color="primary" class="rounded-b-xl">
       <v-toolbar-title class="white--text" v-text="title" />
       <v-spacer></v-spacer>
       <v-btn icon nuxt to="/stats">
@@ -19,8 +19,26 @@
 export default {
   data() {
     return {
-      title: "7W app"
+      title: "Seven wonders ⚔️",
     };
-  }
+  },
 };
 </script>
+
+<style scoped>
+.v-main:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+  background-image: url("~/static/bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  background-size: cover;
+}
+</style>

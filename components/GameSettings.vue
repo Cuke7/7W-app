@@ -3,7 +3,7 @@
     <v-divider></v-divider>
 
     <!-- SWITCH ARMADA -->
-    <h2 class="title my-4">Mode de jeu</h2>
+    <h2 class="title my-4 font-weight-bold">Mode de jeu</h2>
     <v-switch
       hide-details
       v-model="armadaSwitch"
@@ -15,7 +15,7 @@
     <v-divider></v-divider>
 
     <!-- CHOIX DES JOUEURS-->
-    <h2 class="title my-4">Choix des joueurs</h2>
+    <h2 class="title my-4 font-weight-bold">Choix des joueurs</h2>
 
     <v-chip-group
       v-model="selectedPlayers"
@@ -29,6 +29,7 @@
         v-bind:key="index"
         filter
         color="primary"
+        :value="index"
       >
         <div>
           {{ player.nom }}
@@ -48,39 +49,38 @@
     <v-divider></v-divider>
 
     <!-- DISTRIBUTION-->
-    <h2 class="title my-4">Distribution</h2>
-
-    <v-row
-      v-for="(player, index) in game.players"
-      v-bind:key="index"
-      align="center"
-      justify="space-between"
-    >
-      <v-col cols="auto">
-        <v-row align="center" justify="space-between">
-          <v-col>
-            <v-avatar color="orange">
-              <img :src="'/pictures/' + player.pic_url" />
-            </v-avatar>
-          </v-col>
-          <v-col>
+    <h2 class="title my-4 font-weight-bold">Distribution</h2>
+    <v-card class="pa-6 mb-8 rounded-t-xl" elevation="24">
+      <v-row
+        v-for="(player, index) in game.players"
+        v-bind:key="index"
+        align="center"
+        justify="space-between"
+      >
+        <v-col cols="auto">
+          <v-row align="center" justify="space-between">
+            <v-col class="auto pr-0">
+              <v-avatar color="orange">
+                <img :src="'/pictures/' + player.pic_url" />
+              </v-avatar>
+            </v-col>
             <v-col cols="auto">
-              <div class="text-body-1 font-weight-bold">
+              <div class="text-body-1">
                 {{ player.nom }}
               </div>
             </v-col>
-          </v-col>
-        </v-row>
-      </v-col>
+          </v-row>
+        </v-col>
 
+        <v-col cols="auto" class="pl-0">
+          <v-chip label color="secondary">
+            {{ player.merveille }}
+          </v-chip>
+        </v-col>
+      </v-row>
+    </v-card>
+    <v-row justify="end" class="mb-12">
       <v-col cols="auto">
-        <v-chip label color="secondary">
-          {{ player.merveille }}
-        </v-chip>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col>
         <v-btn nuxt color="primary" class="white--text" to="/gameFinal">
           Compter les points
         </v-btn>
@@ -119,7 +119,7 @@ export default {
       get() {
         let arr = [];
         for (const player of this.$store.state.game.players) {
-          arr.push(this.$store.state.game.players.indexOf(player));
+          arr.push(player.index);
         }
         return arr;
       },
@@ -145,3 +145,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.v-card {
+  background-image: url("~/static/card_bg.jpg");
+  background-repeat: repeat;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container>
     <h1 class="text-center">Réglages de la partie</h1>
     <v-row justify="center" align="center">
       <v-col cols="auto">
