@@ -50,7 +50,7 @@
 
     <!-- DISTRIBUTION-->
     <h2 class="title my-4 font-weight-bold">Distribution</h2>
-    <v-card class="pa-6 mb-8 rounded-t-xl" elevation="24">
+    
       <v-row
         v-for="(player, index) in game.players"
         v-bind:key="index"
@@ -78,7 +78,7 @@
           </v-chip>
         </v-col>
       </v-row>
-    </v-card>
+   
     <v-row justify="end" class="mb-12">
       <v-col cols="auto">
         <v-btn nuxt color="primary" class="white--text" to="/gameFinal">
@@ -145,10 +145,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.v-card {
-  background-image: url("~/static/card_bg.jpg");
-  background-repeat: repeat;
-}
-</style>
