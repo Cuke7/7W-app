@@ -39,7 +39,7 @@
         color="secondary"
         icon
         @click="resetPlayers"
-        class="mb-2"
+        class="my-auto"
         v-if="selectedPlayers.length > 0"
       >
         <v-icon> mdi-cancel </v-icon>
