@@ -138,11 +138,7 @@ export const mutations = {
       return a;
     }
 
-    console.log(shuffledPlayers);
-
     state.game.players = shuffledPlayers;
-
-    localStorage.game = JSON.stringify(state.game);
   },
   resetPlayers(state, value) {
     state.game.players = [];
@@ -153,7 +149,6 @@ export const mutations = {
     for (const point of state.game.players[point.indexPlayer].points) {
       state.game.players[point.indexPlayer].score += Number(point.value);
     }
-    localStorage.game = JSON.stringify(state.game);
   },
   modifyPoints(state, data) {
     state.game.players[data.indexPlayer].points[data.indexPoints].value =
@@ -162,6 +157,14 @@ export const mutations = {
     for (const point of state.game.players[data.indexPlayer].points) {
       state.game.players[data.indexPlayer].score += Number(point.value);
     }
-    localStorage.game = JSON.stringify(state.game);
+  },
+
+  resetScores(state) {
+    for (let player of state.game.players) {
+      player.points = [];
+      player.score = 0;
+    }
+    state.game.indexPlayer = 0;
+    state.game.indexPoints = 0;
   },
 };

@@ -126,16 +126,6 @@
 export default {
   layout: "final",
 
-  mounted() {
-    this.$nextTick(function () {
-      if (localStorage.game) {
-        console.log("Got localStorage");
-        let game = JSON.parse(localStorage.game);
-        this.$store.commit("updateGame", game);
-      }
-    });
-  },
-
   data: () => ({
     points: "",
     dialog: false,
@@ -193,7 +183,7 @@ export default {
         let point = {
           value: this.points,
           color: this.colors[this.game.indexPoints],
-          categorie: this.categories[this.indexPoints],
+          categorie: this.categories[this.game.indexPoints],
           indexPoints: this.game.indexPoints,
           indexPlayer: this.game.indexPlayer,
         };

@@ -3,7 +3,7 @@
     <v-divider></v-divider>
 
     <!-- SWITCH ARMADA -->
-    <h2 class="title my-4 font-weight-bold">Mode de jeu</h2>
+    <h2 class="title my-4 font-weight-bold">Extensions</h2>
     <v-switch
       hide-details
       v-model="armadaSwitch"
@@ -50,35 +50,35 @@
 
     <!-- DISTRIBUTION-->
     <h2 class="title my-4 font-weight-bold">Distribution</h2>
-    
-      <v-row
-        v-for="(player, index) in game.players"
-        v-bind:key="index"
-        align="center"
-        justify="space-between"
-      >
-        <v-col cols="auto">
-          <v-row align="center" justify="space-between">
-            <v-col class="auto pr-0">
-              <v-avatar color="orange">
-                <img :src="'/pictures/' + player.pic_url" />
-              </v-avatar>
-            </v-col>
-            <v-col cols="auto">
-              <div class="text-body-1">
-                {{ player.nom }}
-              </div>
-            </v-col>
-          </v-row>
-        </v-col>
 
-        <v-col cols="auto" class="pl-0">
-          <v-chip label color="secondary">
-            {{ player.merveille }}
-          </v-chip>
-        </v-col>
-      </v-row>
-   
+    <v-row
+      v-for="(player, index) in game.players"
+      v-bind:key="index"
+      align="center"
+      justify="space-between"
+    >
+      <v-col cols="auto">
+        <v-row align="center" justify="space-between">
+          <v-col class="auto pr-0">
+            <v-avatar color="orange">
+              <img :src="'/pictures/' + player.pic_url" />
+            </v-avatar>
+          </v-col>
+          <v-col cols="auto">
+            <div class="text-body-1">
+              {{ player.nom }}
+            </div>
+          </v-col>
+        </v-row>
+      </v-col>
+
+      <v-col cols="auto" class="pl-0">
+        <v-chip label color="secondary">
+          {{ player.merveille }}
+        </v-chip>
+      </v-col>
+    </v-row>
+
     <v-row justify="end" class="mb-12">
       <v-col cols="auto">
         <v-btn nuxt color="primary" class="white--text" to="/gameFinal">
@@ -94,16 +94,8 @@ export default {
   data: () => ({
     // selectedPlayers: [],
   }),
-  mounted() {
-    this.$nextTick(function () {
-      if (localStorage.game) {
-        console.log("Got localStorage");
-        let game = JSON.parse(localStorage.game);
-        this.$store.commit("updateGame", game);
-      }
-    });
-  },
   computed: {
+    // Game data object
     game() {
       return this.$store.state.game;
     },

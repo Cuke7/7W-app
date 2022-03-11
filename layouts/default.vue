@@ -24,21 +24,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.v-main:before {
-  content: " ";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.25;
-  background-image: url("~/static/bg.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-
-  background-size: cover;
-}
-</style>

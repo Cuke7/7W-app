@@ -18,16 +18,3 @@ export default {
   },
 };
 </script>
-
-<style>
-/* .v-main {
-  background-image: linear-gradient(
-    to bottom,
-    #3c64de,
-    #0075d1,
-    #00769c,
-    #006e5d,
-    #17632a
-  );
-} */
-</style>
