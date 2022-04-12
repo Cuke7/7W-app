@@ -59,6 +59,7 @@
                 small
                 :color="point.color"
                 @click="openDialog(player, point)"
+                class="px-2"
               >
                 <div
                   v-if="
@@ -68,7 +69,8 @@
                     point.color == 'red' ||
                     point.color == 'indigo lighten-1' ||
                     point.color == 'green' ||
-                    point.color == 'purple'
+                    point.color == 'purple' ||
+                    point.color == 'black'
                   "
                   class="white--text"
                 >
@@ -140,28 +142,21 @@ export default {
       "yellow",
       "green",
       "purple",
+      "black",
       "indigo lighten-1",
       "blue lighten-1",
-    ],
-    categories: [
-      "merveilles",
-      "or",
-      "guerre",
-      "cartes bleues",
-      "cartes jaunes",
-      "science",
-      "guildes",
-      "guerre maritime",
-      "îles",
     ],
   }),
   computed: {
     game() {
       return this.$store.state.game;
     },
+    categories() {
+      return this.$store.state.categories;
+    },
     titre() {
       let titre;
-      if (this.game.indexPoints < (this.game.armadaSwitch ? 9 : 7)) {
+      if (this.game.indexPoints < this.categories.length) {
         if (this.game.players.length > 0) {
           titre =
             this.game.players[this.game.indexPlayer].nom +
@@ -176,10 +171,7 @@ export default {
   },
   methods: {
     ajoutPoints() {
-      if (
-        this.game.indexPoints < (this.game.armadaSwitch ? 9 : 7) &&
-        this.points
-      ) {
+      if (this.game.indexPoints < this.categories.length && this.points) {
         let point = {
           value: this.points,
           color: this.colors[this.game.indexPoints],

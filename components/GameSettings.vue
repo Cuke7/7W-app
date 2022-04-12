@@ -7,7 +7,14 @@
     <v-switch
       hide-details
       v-model="armadaSwitch"
-      :label="armadaSwitch ? 'Armada' : 'Classique'"
+      label="Armada"
+      class="mb-4"
+      color="secondary"
+    ></v-switch>
+    <v-switch
+      hide-details
+      v-model="citiesSwitch"
+      label="Cities"
       class="mb-4"
       color="secondary"
     ></v-switch>
@@ -105,6 +112,14 @@ export default {
       },
       set(value) {
         this.$store.commit("updateArmadaSwitch", value);
+      },
+    },
+    citiesSwitch: {
+      get() {
+        return this.$store.state.game.citiesSwitch;
+      },
+      set(value) {
+        this.$store.commit("updateCitiesSwitch", value);
       },
     },
     selectedPlayers: {

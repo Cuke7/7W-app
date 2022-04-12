@@ -83,21 +83,22 @@ export const state = () => ({
     "Ephesos",
     "Alexandria",
   ],
-  merveilles_armada: [
-    "Babylone",
-    "Olympia",
-    "Gizah",
-    "Rhódos",
-    "Halikarnassós",
-    "Ephesos",
-    "Alexandria",
-    "Syracuse ",
+  categories_clean: [
+    "merveilles",
+    "or",
+    "guerre",
+    "cartes bleues",
+    "cartes jaunes",
+    "science",
+    "guildes",
   ],
+  categories: [],
   guestsNumbers: 0,
   // Game data
   game: {
     players: [],
     armadaSwitch: false,
+    citiesSwitch: false,
     indexPlayer: 0,
     indexPoints: 0,
   },
@@ -106,6 +107,9 @@ export const state = () => ({
 export const mutations = {
   updateArmadaSwitch(state, value) {
     state.game.armadaSwitch = value;
+  },
+  updateCitiesSwitch(state, value) {
+    state.game.citiesSwitch = value;
   },
   updateGame(state, game) {
     state.game = game;
@@ -117,13 +121,31 @@ export const mutations = {
     state.game.indexPoints = index;
   },
   updateGamePlayers(state, players) {
-    let merveilles;
-    if (state.game.armadaSwitch) {
-      merveilles = shuffle([...state.merveilles_armada]);
-    } else {
-      merveilles = shuffle([...state.merveilles]);
+    let categories = [...state.categories_clean];
+
+    if (state.game.citiesSwitch) {
+      categories.push("noirs");
     }
 
+    if (state.game.armadaSwitch) {
+      categories.push("guerre maritime");
+      categories.push("îles");
+    }
+
+    state.categories = categories;
+
+    let merveilles_clean = [...state.merveilles];
+
+    if (state.game.citiesSwitch) {
+      merveilles_clean.push("Petra");
+      merveilles_clean.push("Bizantium");
+    }
+
+    if (state.game.armadaSwitch) {
+      merveilles_clean.push("Syracusse");
+    }
+
+    let merveilles = shuffle(merveilles_clean);
     let shuffledPlayers = shuffle(players);
 
     for (let i = 0; i < shuffledPlayers.length; i++) {
